@@ -1,0 +1,64 @@
+@import url("@/assets/css/var.scss");
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 62.5%;
+
+    @media (orientation: portrait) {
+        @media (max-width: 767px) {
+            font-size: calc(10 / 390 * 100dvw);
+        }
+    }
+    @media (orientation: landscape) {
+        @media (max-height: 767px) {
+            font-size: calc(10 / 390 * 100dvh);
+        }
+    }
+}
+
+body {
+    background: var(--key-color-02) url("@/assets/img/bg.jpg") 50% 50% / cover;
+    color: var(--text-color);
+    font-size: 1.6rem;
+
+}
+
+#app {
+    position: relative;
+    width: 100dvw;
+    max-width: 1280px;
+    height: 100dvh;
+    margin: 0 auto;
+    container-type: size;
+    overflow-y: auto;
+    
+    --sb-track-color: rgb(75, 40, 40);
+    --sb-thumb-color: rgb(75, 60, 60);;
+    --sb-size: 10px;
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+
+    &::-webkit-scrollbar {
+        width: var(--sb-size) 
+    }
+    &::-webkit-scrollbar-track {
+        background: var(--sb-track-color);
+        border-radius: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: var(--sb-thumb-color);
+        border-radius: 10px;
+    }
+}
+
+a {
+    outline: 0;
+    color: currentColor;
+}
