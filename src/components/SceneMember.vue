@@ -53,31 +53,32 @@ defineExpose({
           class="SceneMember__item"
           v-for="item in list"
           v-bind:class="{
-          'damage': item.damage === true,
-          'heal' : item.heal === true,
-          'speaking': item.speaking === true,
-        }">
+            'damage': item.damage === true,
+            'heal' : item.heal === true,
+            'speaking': item.speaking === true,
+          }">
+          <div class="SceneMember__itemInner">
+            <figure class="SceneMember__pict">
+              <img v-bind:src="getImageCharacter(item.name_id)" alt="">
+            </figure>
 
-          <figure class="SceneMember__pict">
-            <img v-bind:src="getImageCharacter(item.name_id)" alt="">
-          </figure>
-
-          <div class="SceneMember__data">
-            <h3>{{ item.name }}</h3>
-            <dl>
-              <div class="hp">
-                <dt>HP</dt>
-                <dd>
-                  <span v-bind:style="{ width: (item.c_hp / item.hp * 100) + '%' }" />
-                </dd>
-              </div>
-              <div class="mp">
-                <dt>MP</dt>
-                <dd>
-                  <span v-bind:style="{ width: (item.c_mp / item.mp * 100) + '%' }" />
-                </dd>
-              </div>
-            </dl>
+            <div class="SceneMember__data">
+              <h3>{{ item.name }}</h3>
+              <dl>
+                <div class="hp">
+                  <dt>HP</dt>
+                  <dd>
+                    <span v-bind:style="{ width: (item.c_hp / item.hp * 100) + '%' }" />
+                  </dd>
+                </div>
+                <div class="mp">
+                  <dt>MP</dt>
+                  <dd>
+                    <span v-bind:style="{ width: (item.c_mp / item.mp * 100) + '%' }" />
+                  </dd>
+                </div>
+              </dl>
+            </div>
           </div>
         </li>
       </ul>
@@ -152,9 +153,6 @@ defineExpose({
 
   &__item {
     display: grid;
-    grid-template-columns: auto 1fr;
-    grid-template-rows: 1fr;
-    grid-gap: .5rem;
     padding: 1.5cqh;
     background: hsl(0, 30%, 23%);
     border: .3rem solid hsl(0, 30%, 48%);
@@ -163,7 +161,6 @@ defineExpose({
     border-radius: .5rem;
     box-shadow: .25rem .25rem .2rem rgba(0, 0, 0, .5);
     transition: border-color 300ms, background-color 300ms;
-    container-type: size;
 
     &.damage {
       animation: damage-animation-1 none 100ms 3;
@@ -197,6 +194,14 @@ defineExpose({
       border-color: #ffe922;
       border-style: solid;
     }
+  }
+
+  &__itemInner {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: .5rem;
+    container-type: size;
   }
 
   &__pict {

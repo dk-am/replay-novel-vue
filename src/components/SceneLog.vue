@@ -68,10 +68,10 @@ const outputLog: ComputedRef<Log[]> = computed(() => {
 
 <style lang="scss" scoped>
 .SceneLog {
-  position: fixed;
+  position: absolute;
   top: 0;
   z-index: 9999;
-  height: 100cqh;
+  height: 100%;
   background: rgba(0, 0, 0, .9);
   box-shadow: .5rem .5rem .3rem rgba(0, 0, 0, .5);
   font-size: 1.4rem;
@@ -80,16 +80,16 @@ const outputLog: ComputedRef<Log[]> = computed(() => {
   @media (orientation: portrait) {
     @media (max-width: 767px) {
       left: -2dvw;
-      width: calc(100cqw + 4dvw);
+      width: calc(100% + 4dvw);
     }
     @media not (max-width: 767px) {
       left: 0;
-      width: 100cqw;
+      width: 100%;
     }
   }
   @media (orientation: landscape) {
     left: 0;
-    width: 100cqw;
+    width: 100%;
   }
 
   &__buttonOpen {
